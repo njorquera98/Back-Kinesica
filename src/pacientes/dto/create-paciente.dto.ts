@@ -1,4 +1,4 @@
-import { IsDateString, IsNumber, IsString } from "class-validator";
+import { IsDateString, IsOptional, IsString } from "class-validator";
 
 export class CreatePacienteDto {
 
@@ -8,10 +8,11 @@ export class CreatePacienteDto {
   @IsString()
   apellido: string;
 
-  @IsNumber()
-  telefono: number;
+  @IsString()
+  telefono: string;
 
   @IsString()
+  @IsOptional()
   correo: string;
 
   @IsString()

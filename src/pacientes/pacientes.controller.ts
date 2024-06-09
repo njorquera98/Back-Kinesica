@@ -5,7 +5,7 @@ import { UpdatePacienteDto } from './dto/update-paciente.dto';
 
 @Controller('pacientes')
 export class PacientesController {
-  constructor(private readonly pacientesService: PacientesService) {}
+  constructor(private readonly pacientesService: PacientesService) { }
 
   @Post()
   create(@Body() createPacienteDto: CreatePacienteDto) {
@@ -18,17 +18,17 @@ export class PacientesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.pacientesService.findOne(+id);
+  findOne(@Param('id') id: number) {
+    return this.pacientesService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePacienteDto: UpdatePacienteDto) {
-    return this.pacientesService.update(+id, updatePacienteDto);
+  update(@Param('id') id: number, @Body() updatePacienteDto: UpdatePacienteDto) {
+    return this.pacientesService.update(id, updatePacienteDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.pacientesService.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.pacientesService.remove(id);
   }
 }

@@ -1,9 +1,11 @@
-import { Column, Entity } from "typeorm";
+import { Consulta } from "src/consultas/entities/consulta.entity";
+import { Sesion } from "src/sesiones/entities/sesion.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Paciente {
 
-  @Column({ primary: true, generated: true })
+  @PrimaryGeneratedColumn()
   paciente_id: number;
 
   @Column()
@@ -18,10 +20,10 @@ export class Paciente {
   @Column()
   correo: string;
 
-  @Column()
+  @Column({ type: 'date' })
   fecha_nacimiento: Date;
 
-  @Column()
+  @Column({ type: 'date' })
   fecha_ingreso: Date;
 
   @Column()
@@ -36,4 +38,9 @@ export class Paciente {
   @Column()
   diagnostico: string;
 
+  @OneToMany(() => Sesion, sesion => sesion.paciente)
+  sesiones: Sesion[];
+
+  @OneToMany(() => Consulta, consulta => consulta.paciente)
+  consultas: Consulta[];
 }
