@@ -6,6 +6,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PacientesModule } from './pacientes/pacientes.module';
 import { SesionesModule } from './sesiones/sesiones.module';
 import { ConsultasModule } from './consultas/consultas.module';
+import { EvaluacionesModule } from './evaluaciones/evaluaciones.module';
+import { TerapiasModule } from './terapias/terapias.module';
+import { AntecedentesModule } from './antecedentes/antecedentes.module';
 
 @Module({
   imports: [
@@ -31,6 +34,9 @@ import { ConsultasModule } from './consultas/consultas.module';
     PacientesModule,
     SesionesModule,
     ConsultasModule,
+    EvaluacionesModule,
+    TerapiasModule,
+    AntecedentesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
