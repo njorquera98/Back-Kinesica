@@ -13,7 +13,7 @@ export class PacientesService {
   ) { }
 
   create(createPacienteDto: CreatePacienteDto) {
-    return this.pacientesRepository.save(createPacienteDto);
+    return //this.pacientesRepository.save(createPacienteDto);
   }
 
   findAll() {
@@ -25,7 +25,7 @@ export class PacientesService {
   }
 
   update(id: number, updatePacienteDto: UpdatePacienteDto) {
-    return this.pacientesRepository.update(id, updatePacienteDto)
+    return //this.pacientesRepository.update(id, updatePacienteDto)
   }
 
   remove(id: number) {

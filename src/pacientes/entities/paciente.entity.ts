@@ -1,5 +1,8 @@
+import { Antecedente } from "src/antecedentes/entities/antecedente.entity";
 import { Consulta } from "src/consultas/entities/consulta.entity";
+import { Evaluacion } from "src/evaluaciones/entities/evaluacion.entity";
 import { Sesion } from "src/sesiones/entities/sesion.entity";
+import { Terapia } from "src/terapias/entities/terapia.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -23,24 +26,23 @@ export class Paciente {
   @Column({ type: 'date' })
   fecha_nacimiento: Date;
 
-  @Column({ type: 'date' })
-  fecha_ingreso: Date;
-
   @Column()
   prevision: string;
 
-  @Column()
-  evaluacion: string;
+  @OneToMany(() => Antecedente, antecedente => antecedente.paciente)
+  antecedentes: Antecedente[];
 
-  @Column()
-  objetivo: string;
+  @OneToMany(() => Consulta, consulta => consulta.paciente)
+  consultas: Consulta[];
 
-  @Column()
-  diagnostico: string;
+  @OneToMany(() => Evaluacion, evaluacion => evaluacion.pacientes)
+  evaluacion: Evaluacion[];
 
   @OneToMany(() => Sesion, sesion => sesion.paciente)
   sesiones: Sesion[];
 
-  @OneToMany(() => Consulta, consulta => consulta.paciente)
-  consultas: Consulta[];
+  @OneToMany(() => Terapia, terapia => terapia.paciente)
+  terapias: Terapia[];
+
+
 }
