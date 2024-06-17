@@ -1,13 +1,12 @@
-import { Column, Entity } from "typeorm";
+import { Paciente } from "src/pacientes/entities/paciente.entity";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+
 
 @Entity()
 
 export class Sesion {
-  @Column({ primary: true, generated: true })
+  @PrimaryGeneratedColumn()
   sesion_id: number;
-
-  @Column()
-  paciente_fk: number;
 
   @Column()
   n_de_sesion: number;
@@ -20,4 +19,8 @@ export class Sesion {
 
   @Column()
   descripcion: string;
+
+  @ManyToOne(() => Paciente, paciente => paciente.sesiones)
+  @JoinColumn({ name: 'paciente_fk' })
+  paciente: Paciente;
 }

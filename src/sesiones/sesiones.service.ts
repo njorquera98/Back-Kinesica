@@ -1,9 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { CreateSesionDto } from './dto/create-sesion.dto';
 import { UpdateSesionDto } from './dto/update-sesion.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Sesion } from './entities/sesion.entity';
+import { Repository } from 'typeorm';
+import { Paciente } from 'src/pacientes/entities/paciente.entity';
 
 @Injectable()
 export class SesionesService {
+  constructor(
+
+    @InjectRepository(Sesion)
+    private sesionesRepository: Repository<Sesion>,
+
+    @InjectRepository(Paciente)
+    private pacientesRepository: Repository<Paciente>,
+  ) { }
+
   create(createSesionDto: CreateSesionDto) {
     return 'This action adds a new sesion';
   }
