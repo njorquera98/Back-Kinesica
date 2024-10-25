@@ -9,6 +9,7 @@ import { ConsultasModule } from './consultas/consultas.module';
 import { EvaluacionesModule } from './evaluaciones/evaluaciones.module';
 import { TerapiasModule } from './terapias/terapias.module';
 import { AntecedentesModule } from './antecedentes/antecedentes.module';
+import { CanchaDisponibleModule } from './cancha-disponible/cancha-disponible.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { AntecedentesModule } from './antecedentes/antecedentes.module';
     EvaluacionesModule,
     TerapiasModule,
     AntecedentesModule,
+    CanchaDisponibleModule,
   ],
   controllers: [AppController],
   providers: [AppService],
